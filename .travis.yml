@@ -6,6 +6,6 @@ install:
   - npm install
   - gulp compile
 
-notification:
+notifications:
   email: false
   slack: coldcode:UKzQKPtXCYumljexidtM6bqK
