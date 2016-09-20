@@ -6,8 +6,8 @@ var gulp = require("gulp"),
     sourcemaps = require("gulp-sourcemaps");
 
 var paths = {
-  scripts: ["./**/*.coffee", "!./node_modules/**/*.coffee"],
-  styles: ["./**/*.less", "!./node_modules/**/*.less"]
+  scripts: ["./src/**/*.coffee", "!./node_modules/**/*.coffee"],
+  styles: ["./src/**/*.less", "!./node_modules/**/*.less"]
 }
 
 gulp.task("compile-coffee", function(){
