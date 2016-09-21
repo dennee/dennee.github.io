@@ -6,8 +6,8 @@ var gulp = require("gulp"),
     sourcemaps = require("gulp-sourcemaps");
 
 var paths = {
-  scripts: ["./src/**/*.coffee", "!./node_modules/**/*.coffee"],
-  styles: ["./src/**/*.less", "!./node_modules/**/*.less"]
+  scripts: ["./src/scripts/**/*.coffee", "!./node_modules/**/*.coffee"],
+  styles: ["./src/styles/**/*.less", "!./node_modules/**/*.less"]
 }
 
 gulp.task("compile-coffee", function(){
@@ -16,13 +16,19 @@ gulp.task("compile-coffee", function(){
     .pipe(coffee())
     .pipe(uglify())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("./scripts/**/*.js"))
+    .pipe(gulp.dest(function(f){
+      var path = f.base.replace("src\\", "");
+      return path;
+    }))
 });
 
 gulp.task("compile-less", function(){
   return gulp.src(paths.styles)
     .pipe(less())
-    .pipe(gulp.dest("./styles/**/*.css"))
+    .pipe(gulp.dest(function(f){
+      var path = f.base.replace("src\\", "");
+      return path;
+    }))
 });
 
 gulp.task("compile", ["compile-coffee", "compile-less"]);
