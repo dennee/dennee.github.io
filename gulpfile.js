@@ -17,7 +17,7 @@ gulp.task("compile-coffee", function(){
     .pipe(uglify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(function(f){
-      var path = f.base.replace("src\\", "");
+      var path = f.base.replace("src\\", "build\\");
       return path;
     }))
 });
@@ -26,7 +26,7 @@ gulp.task("compile-less", function(){
   return gulp.src(paths.styles)
     .pipe(less())
     .pipe(gulp.dest(function(f){
-      var path = f.base.replace("src\\", "");
+      var path = f.base.replace("src\\", "build\\");
       return path;
     }))
 });
